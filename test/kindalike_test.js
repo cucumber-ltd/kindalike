@@ -2,19 +2,19 @@ var assert = require('assert');
 var kindalike = require('..');
 
 describe('kindalike', function () {
-  it('filters and sorts matches according to match distance', function () {
+  it('filters and sorts matches according to match gaps', function () {
     var like = kindalike('ace', ['acde', 'eca', 'ace']);
     assert.deepEqual(like, [
-      { subject: 'ace', indices: [0, 1, 2], distance: 0 },
-      { subject: 'acde', indices: [0, 1, 3], distance: 1 }
+      { subject: 'ace', indices: [0, 1, 2], gaps: 0 },
+      { subject: 'acde', indices: [0, 1, 3], gaps: 1 }
     ]);
   });
 
   it('ignores case', function () {
     var like = kindalike('aCe', ['Acde', 'EcA', 'acE']);
     assert.deepEqual(like, [
-      { subject: 'acE', indices: [0, 1, 2], distance: 0 },
-      { subject: 'Acde', indices: [0, 1, 3], distance: 1 }
+      { subject: 'acE', indices: [0, 1, 2], gaps: 0 },
+      { subject: 'Acde', indices: [0, 1, 3], gaps: 1 }
     ]);
   });
 

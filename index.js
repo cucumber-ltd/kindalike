@@ -11,7 +11,7 @@
       var queryIndex = 0;
       var subjectIndex = -1;
       var indices = [];
-      var distance = 0;
+      var gaps = 0;
 
       // Loop over the chars in the subject
       while(++subjectIndex < subject.length) {
@@ -20,17 +20,17 @@
         if(queryChar === subjectChar) {
           indices.push(subjectIndex);
           if(queryIndex > 0) {
-            distance += indices[queryIndex] - indices[queryIndex-1] - 1;
+            gaps += indices[queryIndex] - indices[queryIndex-1] - 1;
           }
           queryIndex++;
         }
       }
       if(indices.length == query.length) {
-        result.push({subject: subject, indices: indices, distance: distance});
+        result.push({subject: subject, indices: indices, gaps: gaps});
       }
     }
     result.sort(function(r1, r2) {
-      return r1.distance === r2.distance ? 0 : ( r1.distance < r2.distance ? -1 : 1);
+      return r1.gaps === r2.gaps ? 0 : ( r1.gaps < r2.gaps ? -1 : 1);
     });
     return result;
   }
