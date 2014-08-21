@@ -10,7 +10,7 @@ describe('kindalike', function () {
     ]);
   });
 
-  it('can evaluate 10000 strings in less than 50ms', function () {
+  for(var n = 0; n < 50; n++) {
     function randomString(length, chars) {
         var result = '';
         for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
@@ -18,14 +18,16 @@ describe('kindalike', function () {
     }
     var subjects = [];
     for(var i = 0; i < 10000; i++) {
-      subjects.push(randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+      subjects.push(randomString(32, 'abcdefghijklmnopqrstuvwxyz'));
     }
-    var start = Date.now();
-    var like = kindalike('abc', subjects);
-    var duration = Date.now() - start; // 24-44 ms
-    console.log(duration);
-    if(duration > 50) throw new Error("Too slow: " + duration);
-  });
+    it('can evaluate 10000 strings in less than 50ms', function () {
+      var start = Date.now();
+      var like = kindalike('abcdef', subjects);
+      var duration = Date.now() - start;
+      console.log(duration, like.length, duration/like.length); // 2-3 ms per hit
+      if(duration > 50) throw new Error("Too slow: " + duration);
+    });
+  }
 
   describe('.matches', function () {
     it('finds match indices', function () {
