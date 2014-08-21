@@ -16,15 +16,15 @@ describe('kindalike', function () {
         for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
         return result;
     }
-    var subjects = [];
-    for(var i = 0; i < 10000; i++) {
-      subjects.push(randomString(32, 'abcdefghijklmnopqrstuvwxyz'));
-    }
     it('can evaluate 10000 strings in less than 50ms', function () {
+      var subjects = [];
+      for(var i = 0; i < 10000; i++) {
+        subjects.push(randomString(32, 'abcdefghijklmnopqrstuvwxyz'));
+      }
       var start = Date.now();
       var like = kindalike('abcde', subjects);
       var duration = Date.now() - start;
-      console.log(duration, like.length, duration/like.length); // 2-3 ms per hit
+      console.log(duration, like.length, duration/like.length);
       if(duration > 50) throw new Error("Too slow: " + duration);
     });
   }
