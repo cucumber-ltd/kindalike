@@ -1,0 +1,29 @@
+{
+  "name": "kindalike",
+  "version": "0.0.0",
+  "description": "String matching and ranking algorithm for autocomplete",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cucumber-ltd/kindalike.git"
+  },
+  "keywords": [
+    "search",
+    "string",
+    "match",
+    "fuzzy",
+    "autocomplete"
+  ],
+  "author": "Cucumber Limited",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cucumber-ltd/kindalike/issues"
+  },
+  "homepage": "https://github.com/cucumber-ltd/kindalike",
+  "devDependencies": {
+    "mocha": "^1.21.4"
+  }
+}
