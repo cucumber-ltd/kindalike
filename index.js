@@ -2,23 +2,28 @@ function kindalike () {
 
 }
 
-function matches (q, strings) {
+function matches (query, subjects) {
   var result = [];
-  for(var n in strings) {
-    var s = strings[n];
-    var j = -1;
+  for(var n in subjects) {
+    var subject = subjects[n];
+    var queryIndex = 0;
+    var subjectIndex = -1;
     var matches = [];
-    for(var i in q) {
-      var qc = q[i];
-      while(++j < s.length) {
-        var sc = s[j];
-        if(qc === sc) {
-          matches.push(j);
-          break;
-        }
+
+    // Loop over the chars in the subject
+    while(++subjectIndex < subject.length) {
+      var queryChar = query[queryIndex];
+      var subjectChar = subject[subjectIndex];
+      if(queryChar === subjectChar) {
+        matches.push(subjectIndex);
+        queryIndex++;
       }
     }
-    result.push(matches);
+    if(matches.length == query.length) {
+      result.push(matches);
+    } else {
+      result.push([]);
+    }
   }
   return result;
 }
