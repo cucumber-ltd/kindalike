@@ -16,7 +16,7 @@ var matches = kindalike(query, subjects);
 
 Each `match` is an object like so:
 
-```
+```javascript
 { subject: 'horse', indices: [1, 4], gaps: 2 }
 ```
 
@@ -36,7 +36,7 @@ match all the characters in the query are excluded.
 
 Each `match` can be turned into string with `<span>` elements around each matched character:
 
-```
+```javascript
 var html = kindalike.spans({ subject: 'horse', indices: [1, 4], gaps: 2 })
 ```
 
