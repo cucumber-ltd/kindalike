@@ -35,6 +35,26 @@
     return result;
   }
 
+  /**
+   * Turns a match into a string with spans
+   */
+  kindalike.spans = function(match) {
+    var text = '';
+    var start = 0;
+    for(var n = 0; n < match.indices.length; n++) {
+      var i = match.indices[n];
+
+      text += match.subject.slice(start, i);
+      text += '<span>';
+      text += match.subject[i];
+      text += '</span>';
+
+      start = i+1;
+    }
+    text += match.subject.slice(start);
+    return text;
+  }
+
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     // Node.js
     module.exports = kindalike;

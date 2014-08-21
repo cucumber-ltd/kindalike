@@ -18,6 +18,13 @@ describe('kindalike', function () {
     ]);
   });
 
+  describe('spans', function() {
+    it('converts a match to a string with spans', function () {
+      var match = { subject: 'abcdefghi', indices: [2, 4, 6], gaps: 1 };
+      assert.equal(kindalike.spans(match), 'ab<span>c</span>d<span>e</span>f<span>g</span>hi');
+    });
+  });
+
   for(var n = 0; n < 50; n++) {
     function randomString(length, chars) {
         var result = '';

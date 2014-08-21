@@ -2,6 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <style type="text/css" media="screen">
+      li span {
+        color: red;
+      }
+    </style>
   </head>
   <body>
     <input type=text id=q placeholder="Search for countries">
@@ -267,7 +272,7 @@
       q.onkeyup = function() {
         var matches = kindalike(q.value, countries);
         var ulBody = matches.map(function (match) {
-          return("<li>" + match.subject + "</li>");
+          return("<li>" + kindalike.span(match) + "</li>");
         }).join("");
         hits.innerHTML = ulBody;
       };
