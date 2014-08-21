@@ -29,11 +29,18 @@ each of those letters were found at indices `[1, 4]`.
 The `gaps` property is a number indicating how many gaps there are between letters from the
 query string. In this case there was a gap of `2` - between index `1` and `4`.
 
-The matches are sorted by the `gaps` property, ranking matches with small gaps higher.
+The matches are sorted by the `gaps` property, ranking matches with small gaps higher. Subjects that don't
+match all the characters in the query are excluded.
 
 ## Rendering
 
 Each `match` can be turned into string with `<span>` elements around each matched character:
+
+```
+var html = kindalike.spans({ subject: 'horse', indices: [1, 4], gaps: 2 })
+```
+
+Returns:
 
 ```
 h<span>o</span>rs<span>e</span>
