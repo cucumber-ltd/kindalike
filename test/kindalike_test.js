@@ -10,6 +10,14 @@ describe('kindalike', function () {
     ]);
   });
 
+  it('ignores case', function () {
+    var like = kindalike('aCe', ['Acde', 'EcA', 'acE']);
+    assert.deepEqual(like, [
+      { subject: 'acE', indices: [0, 1, 2], distance: 0 },
+      { subject: 'Acde', indices: [0, 1, 3], distance: 1 }
+    ]);
+  });
+
   for(var n = 0; n < 50; n++) {
     function randomString(length, chars) {
         var result = '';

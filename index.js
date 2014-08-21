@@ -2,9 +2,12 @@
   'use strict';
 
   function kindalike (query, subjects) {
+    query = query.toLowerCase();
+
     var result = [];
     for(var n in subjects) {
       var subject = subjects[n];
+      var lowerCaseSubject = subject.toLowerCase();
       var queryIndex = 0;
       var subjectIndex = -1;
       var indices = [];
@@ -13,7 +16,7 @@
       // Loop over the chars in the subject
       while(++subjectIndex < subject.length) {
         var queryChar = query[queryIndex];
-        var subjectChar = subject[subjectIndex];
+        var subjectChar = lowerCaseSubject[subjectIndex];
         if(queryChar === subjectChar) {
           indices.push(subjectIndex);
           if(queryIndex > 0) {
