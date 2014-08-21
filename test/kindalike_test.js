@@ -2,11 +2,13 @@ var assert = require('assert');
 var kindalike = require('..');
 
 describe('kindalike', function () {
-  it('ranks matches according to closeness of hits', function () {
-    var matches = kindalike('ace', ['ace', 'acde']);
-    assert.deepEqual(matches, [
-      {match: 'abc', distance: 0},
-      {match: 'abbc', distance: 1} // 1 char from c to e
-    ]);
+  describe('.matches', function () {
+    it('finds match indices', function () {
+      var matches = kindalike.matches('ace', ['ace', 'acde']);
+      assert.deepEqual(matches, [
+        [0, 1, 2],
+        [0, 1, 3]
+      ]);
+    });
   });
 });
