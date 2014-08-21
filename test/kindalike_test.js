@@ -2,6 +2,14 @@ var assert = require('assert');
 var kindalike = require('..');
 
 describe('kindalike', function () {
+  it('finds and sorts matches according to match distance', function () {
+    var like = kindalike('ace', ['acde', 'eca', 'ace']);
+    assert.deepEqual(like, [
+      { subject: 'ace', indices: [0, 1, 2] },
+      { subject: 'acde', indices: [0, 1, 3] }
+    ]);
+  });
+
   describe('.matches', function () {
     it('finds match indices', function () {
       var matches = kindalike.matches('ace', ['ace', 'acde', 'eca']);
