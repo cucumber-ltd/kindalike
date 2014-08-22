@@ -272,7 +272,7 @@
       q.onkeyup = function() {
         var matches = kindalike(q.value, countries);
         var ulBody = matches.map(function (match) {
-          return("<li>" + kindalike.span(match) + "</li>");
+          return("<li>" + kindalike.spans(match) + "</li>");
         }).join("");
         hits.innerHTML = ulBody;
       };

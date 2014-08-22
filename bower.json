@@ -1,0 +1,8 @@
+{
+  "name": "kindalike",
+  "version": "0.0.1",
+  "main": "kindalike.js",
+  "ignore": [
+    "node_modules"
+  ]
+}

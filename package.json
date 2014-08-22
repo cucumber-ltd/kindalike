@@ -2,7 +2,7 @@
   "name": "kindalike",
   "version": "0.0.0",
   "description": "String matching and ranking algorithm for autocomplete",
-  "main": "index.js",
+  "main": "kindalike.js",
   "scripts": {
     "test": "mocha test"
   },
