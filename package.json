@@ -1,6 +1,6 @@
 {
   "name": "kindalike",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "String matching and ranking algorithm for autocomplete",
   "main": "kindalike.js",
   "scripts": {
