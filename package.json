@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git://github.com/cucumber-ltd/kindalike.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "keywords": [
     "search",
     "string",
