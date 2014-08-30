@@ -23,6 +23,11 @@ describe('kindalike', function () {
       var match = { subject: 'abcdefghi', indices: [2, 4, 6], gaps: 1 };
       assert.equal(kindalike.spans(match), 'ab<span>c</span>d<span>e</span>f<span>g</span>hi');
     });
+
+    it('escapes special characters', function () {
+      var match = { subject: 'ab<>efgh"', indices: [2, 4, 6], gaps: 1 };
+      assert.equal(kindalike.spans(match), 'ab<span>&lt;</span>&gt;<span>e</span>f<span>g</span>h&quot;');
+    });
   });
 
   for(var n = 0; n < 50; n++) {

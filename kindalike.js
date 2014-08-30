@@ -36,7 +36,7 @@
   }
 
   /**
-   * Turns a match into a string with spans
+   * Turns a match into a string with spans. Special chars are escaped.
    */
   kindalike.spans = function(match) {
     var text = '';
@@ -44,15 +44,27 @@
     for(var n = 0; n < match.indices.length; n++) {
       var i = match.indices[n];
 
-      text += match.subject.slice(start, i);
+      text += escapeHtml(match.subject.slice(start, i));
       text += '<span>';
-      text += match.subject[i];
+      text += escapeHtml(match.subject[i]);
       text += '</span>';
 
       start = i+1;
     }
-    text += match.subject.slice(start);
+    text += escapeHtml(match.subject.slice(start));
     return text;
+  }
+
+  function escapeHtml(text) {
+    var map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    };
+
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
   }
 
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
