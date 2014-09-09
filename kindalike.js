@@ -5,12 +5,12 @@
     query = query.toLowerCase();
 
     var results = [];
-    subjects.forEach(function (subject) {
-      var subject = subject.toLowerCase();
+    subjects.forEach(function (rawSubject) {
+      var subject = rawSubject.toLowerCase();
       var queryIndex = 0;
       var subjectIndex = -1;
       var result = {
-        subject: subject,
+        subject: rawSubject,
         indices: [],
         gaps: 0
       };
