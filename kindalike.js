@@ -4,34 +4,37 @@
   function kindalike(query, subjects) {
     query = query.toLowerCase();
 
-    var result = [];
+    var results = [];
     subjects.forEach(function (subject) {
-      var lowerCaseSubject = subject.toLowerCase();
+      var subject = subject.toLowerCase();
       var queryIndex = 0;
       var subjectIndex = -1;
-      var indices = [];
-      var gaps = 0;
+      var result = {
+        subject: subject,
+        indices: [],
+        gaps: 0
+      };
 
       // Loop over the chars in the subject
       while (++subjectIndex < subject.length) {
-        var queryChar = query[queryIndex];
-        var subjectChar = lowerCaseSubject[subjectIndex];
-        if (queryChar === subjectChar) {
-          indices.push(subjectIndex);
+        if (query[queryIndex] === subject[subjectIndex]) {
+          result.indices.push(subjectIndex);
           if (queryIndex > 0) {
-            gaps += indices[queryIndex] - indices[queryIndex-1] - 1;
+            result.gaps += result.indices[queryIndex] - result.indices[queryIndex-1] - 1;
+          } else {
+            result.gaps += subjectIndex;
           }
           queryIndex++;
         }
       }
-      if (indices.length == query.length) {
-        result.push({subject: subject, indices: indices, gaps: gaps});
+      if (result.indices.length == query.length) {
+        results.push(result);
       }
     });
-    result.sort(function (r1, r2) {
+    results.sort(function (r1, r2) {
       return r1.gaps === r2.gaps ? 0 : ( r1.gaps < r2.gaps ? -1 : 1);
     });
-    return result;
+    return results;
   }
 
   /**

@@ -3,11 +3,12 @@ var kindalike = require('..');
 
 describe('kindalike', function () {
   it('filters and sorts matches according to match gaps', function () {
-    var like = kindalike('ace', ['acde', 'eca', 'ace']);
-    assert.deepEqual(like, [
+    var like = kindalike('ace', ['acde', 'eca', 'ace', 'deface']);
+    assert.equal(JSON.stringify(like, null, 2), JSON.stringify([
       { subject: 'ace', indices: [0, 1, 2], gaps: 0 },
-      { subject: 'acde', indices: [0, 1, 3], gaps: 1 }
-    ]);
+      { subject: 'acde', indices: [0, 1, 3], gaps: 1 },
+      { subject: 'deface', indices: [3, 4, 5], gaps: 3 },
+    ], null, 2));
   });
 
   it('ignores case', function () {
