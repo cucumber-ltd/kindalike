@@ -5,8 +5,7 @@
     query = query.toLowerCase();
 
     var result = [];
-    for (var n in subjects) {
-      var subject = subjects[n];
+    subjects.forEach(function (subject) {
       var lowerCaseSubject = subject.toLowerCase();
       var queryIndex = 0;
       var subjectIndex = -1;
@@ -28,7 +27,7 @@
       if (indices.length == query.length) {
         result.push({subject: subject, indices: indices, gaps: gaps});
       }
-    }
+    });
     result.sort(function (r1, r2) {
       return r1.gaps === r2.gaps ? 0 : ( r1.gaps < r2.gaps ? -1 : 1);
     });
