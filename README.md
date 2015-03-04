@@ -2,6 +2,8 @@ This library implements an algorithm that is suitable for autocompletion.
 
 The `kindalike` function takes a search string and an array of subject strings to search in:
 
+TODO: This is kind of similar: https://github.com/bevacqua/fuzzysearch - let's see if it's better/faster!!
+
 ## Example:
 
 ```javascript
