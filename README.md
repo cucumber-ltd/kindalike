@@ -2,6 +2,8 @@ This library implements an algorithm that is suitable for autocompletion.
 
 The `kindalike` function takes a search string and an array of subject strings to search in:
 
+Also see: https://news.ycombinator.com/item?id=10247289 - a thread about Levenshtein Automata and links to Duck Duck Go's super fast autocomplete.
+
 TODO: This is kind of similar: https://github.com/bevacqua/fuzzysearch - let's see if it's better/faster!!
 [HN discussion](https://news.ycombinator.com/item?id=9143665) - is this faster?
 
